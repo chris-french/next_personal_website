@@ -10,6 +10,14 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=PT+Sans:300,400,700,800"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Barlow:wght@200&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Barlow:wght@200&display=swap"
+            rel="stylesheet"
+          ></link>
         </Head>
         <body>
           <Main />

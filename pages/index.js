@@ -59,26 +59,36 @@ const Home = () => {
           >
             <Border
               style={{ zIndex: 12 }}
-              shadow="shadow-2xl"
+              shadow="shadow-lg"
               borderWidth="border-2"
               borderRadius="rounded-lg"
-              className={`${darkMode ? 'bg-alt-dark' : 'bg-alt-light'} 
-              fixed w-full top-4 z-10 items-center ring ring-highlight ring-opacity-25 ring-inset overflow-hidden flex justify-between pr-10 pl-10 pb-2
+              className={`
+              ring-inset overflow-hidden
+
+              border-opacity-75
+
+              ring
+              ring-opacity-75
+              
+              w-[95vw]
+              
+              ${darkMode ? 'bg-alt-dark ring-off-light' : 'bg-alt-light ring-off-dark border-dark '} 
+              fixed w-full top-4 z-10 items-center  flex justify-between pr-10 pl-10 pb-2
                ${darkMode ? 'bg-alt-dark' : 'bg-alt-light'}`}
             >
               <div className="flex flex-col w-full">
                 <div className="mx-auto">
-                  <h1
-                    className={`${
+                  <p
+                    className={`about-front-title pt-1 ${
                       darkMode ? 'text-alt-light' : 'text-alt-dark'
                     } font-bold underline-offset-auto underline`}
                   >
                     chris french
-                  </h1>
+                  </p>
                 </div>
-                <div className="flex flex-row w-full">
-                  <div className="justify-self-center pt-2 mx-auto pl-[130px]">
-                    <div className="flex flex-row gap-1 mb-auto">
+                <div className="flex flex-row w-full pl-[8em]">
+                  <div className="pt-[1vh] mx-auto ">
+                    <div className="flex flex-row gap-1 mb-auto ">
                       <HomeLink
                         name="About"
                         isSelected={selectedTab === 'About'}
@@ -101,9 +111,18 @@ const Home = () => {
                         */}
                     </div>
                   </div>
-                  <div
-                    className={`p-1 ${
-                      darkMode ? 'text-off-light' : 'text-off-dark'
+                  <Border
+                  borderColor={`${darkMode ? 'off-light' : 'off-dark'}`}
+                  borderStyle=''
+                    className={`mb-2 p-1 drop-shadow-lg
+                      transition 
+                      duration-500 
+                      rounded 
+                      border-spacing-2
+                      border-2
+                      
+                      ${
+                      darkMode ? 'text-off-light bg-alt-dark shadow-off-light' : 'text-off-dark bg-alt-light shadow-off-dark'
                     }`}
                   >
                     <Toggle
@@ -112,7 +131,7 @@ const Home = () => {
                       id="dark_mode_toggle"
                       checked={darkMode}
                     />
-                  </div>
+                  </Border>
                 </div>
               </div>
             </Border>
@@ -121,7 +140,7 @@ const Home = () => {
 
         <div
           style={{ zIndex: 8 }}
-          className={`pb-[9.2em] pt-0 h-screen w-full flex items-center`}
+          className={`pb-[9.2em] pl-1 pr-1 pt-[1em] h-screen w-full flex items-center`}
         >
           {selectedTab === 'Resume' && (
             <Resume

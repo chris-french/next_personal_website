@@ -12,6 +12,8 @@ import CustomEdge from '../CustomEdge';
 import Banner from './Banner';
 import 'reactflow/dist/style.css';
 
+const proOptions = { hideAttribution: true };
+
 export default function Resume({ resumeData, darkMode, context }) {
   const [windowDimensions, setWindowDimensions] = useState({
     width: 0,
@@ -145,7 +147,7 @@ export default function Resume({ resumeData, darkMode, context }) {
         type: 'experience',
         position: {
           x: columnWidth * 3 + 450 * col,
-          y: yTopMargin * 3.5 + 250 * row,
+          y: yTopMargin * 4 + 250 * row,
         },
         data: {
           position: experience.position,
@@ -380,6 +382,7 @@ export default function Resume({ resumeData, darkMode, context }) {
         zoomOnScroll={true}
         zoomOnPinch={true}
         paneMoveable={false}
+        proOptions={proOptions}
         style={{ background: darkMode ? 'alt-dark' : 'alt-light' }}
       />
     </Border>

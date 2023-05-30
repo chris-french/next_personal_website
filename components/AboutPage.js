@@ -8,6 +8,7 @@ import 'reactflow/dist/style.css';
 import ImageComponent from '../components/ImageComponent';
 import Banner from './Banner';
 
+const proOptions = { hideAttribution: true };
 
 export default function AboutPage({ aboutData, darkMode, context }) {
   const [windowDimensions, setWindowDimensions] = useState({
@@ -155,6 +156,7 @@ export default function AboutPage({ aboutData, darkMode, context }) {
         zoomOnScroll={true}
         zoomOnPinch={true}
         paneMoveable={false}
+        proOptions={proOptions}
         style={{ background: darkMode ? 'alt-dark' : 'alt-light' }}
       />
     </Border>

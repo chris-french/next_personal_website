@@ -6,10 +6,10 @@ function Banner({ darkMode }) {
       style={{ zIndex: 1 }}
       borderColor={darkMode ? 'light' : 'dark'}
       className={`resume-tooltip ${
-        darkMode ? 'bg-off-dark text-light' : 'text-dark bg-alt-light'
+        darkMode ? 'bg-alt-dark text-light' : 'text-dark bg-alt-light'
       } 
-            absolute text-center p-2 w-[800px] pl-40 h-[100px] rotate-45 
-            left-full transform -translate-x-2/3 -translate-y-1/4`}
+            absolute text-center p-2 w-full pl-80 h-[4em] rotate-45 
+            transform left-[70vh]  `}
     >
       <p>
         Click and drag!

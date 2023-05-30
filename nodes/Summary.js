@@ -18,7 +18,7 @@ function SummaryNode({ data }) {
       />
       <h2
         className={`${
-          darkMode ? 'text-alt-light' : 'text-alt-dark'
+          darkMode ? 'text-off-light' : 'text-off-dark'
         } underline font-bold`}
       >
         Summary

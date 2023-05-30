@@ -18,8 +18,8 @@ function ExpertiseNode({ data }) {
       <div className={` p-5`}>
         <h3
           className={`${
-            darkMode ? 'text-alt-light' : 'text-alt-dark'
-          } underline font-bold`}
+            darkMode ? 'text-off-light' : 'text-off-dark'
+          } font-bold`}
         >
           {label}
         </h3>

@@ -35,11 +35,11 @@ function ExperienceNode({ data }) {
         isConnectable={isConnectable}
       />
 
-      <div className="flex flex-row items-center">
+      <div className={`flex flex-row items-center ${
+            darkMode ? 'bg-alt-dark text-off-light' : 'bg-alt-light text-off-dark'
+          }`}>
         <div
-          className={`experience-date mx-auto mb-auto transform items-center justify-center ${
-            darkMode ? 'bg-alt-light text-dark' : 'bg-alt-dark text-light'
-          }`}
+          className={`experience-date mx-auto mb-auto transform items-center justify-center`}
           key={data.index}
           style={{ writingMode: 'vertical-rl' }}
         >
@@ -48,8 +48,8 @@ function ExperienceNode({ data }) {
 
         <div className="p-2">
           <h2
-            className={`experience-position underline ${
-              darkMode ? 'text-alt-light' : 'text-alt-dark'
+            className={`experience-position ${
+              darkMode ? 'text-off-light' : 'text-off-dark'
             } font-bold pb-2`}
           >
             {data.position}
@@ -58,7 +58,7 @@ function ExperienceNode({ data }) {
             <p
               className={`${
                 darkMode ? 'text-alt-light' : 'text-alt-dark'
-              } font-bold mr-2`}
+              } mr-2`}
             >
               {data.company}
             </p>

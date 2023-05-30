@@ -32,8 +32,8 @@ function EducationNode({ data }) {
           <div className="p-2">
             <h2
               className={`${
-                darkMode ? 'text-alt-light' : 'text-alt-dark'
-              } underline font-bold`}
+                darkMode ? 'text-off-light' : 'text-off-dark'
+              } font-bold`}
             >
               {data.institution}
             </h2>

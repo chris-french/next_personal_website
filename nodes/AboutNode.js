@@ -13,7 +13,7 @@ const AboutNode = ({ data }) => {
         }
       )}
     >
-      {data.sourceData.position != null && (
+      {!data.isMobile && data.sourceData.position != null && (
         <Handle
           type={data.sourceData.type}
           id={data.sourceData.position}
@@ -28,7 +28,7 @@ const AboutNode = ({ data }) => {
         <p className="about-text">{data.content}</p>
       </div>
 
-      {data.targetData.position != null && (
+      {!data.isMobile && data.targetData.position != null && (
         <Handle
           type={data.targetData.type}
           position={data.targetData.position}

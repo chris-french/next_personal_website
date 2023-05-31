@@ -11,30 +11,8 @@ import Banner from './Banner';
 const proOptions = { hideAttribution: true };
 
 export default function AboutPage({ aboutData, darkMode, context }) {
-  const [windowDimensions, setWindowDimensions] = useState({
-    width: 0,
-    height: 0,
-  });
-
-  useEffect(() => {
-    const getWindowDimensions = () => {
-      const { innerWidth: width, innerHeight: height } = window;
-      return { width, height };
-    };
-
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    setWindowDimensions(getWindowDimensions());
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const isMobile = windowDimensions.width <= 768;
-
-  const maxColumns = isMobile ? 1 : 2;
+ 
+  const maxColumns = context.isMobile ? 1 : 2;
 
   const nodeTypes = {
     about: AboutNode,
@@ -50,8 +28,8 @@ export default function AboutPage({ aboutData, darkMode, context }) {
   const min_y = 3;
   const max_y = 13;
 
-  const columnWidth = windowDimensions.width / 12;
-  const rowHeight = windowDimensions.height / 24;
+  const columnWidth = context.windowDimensions.width / 12;
+  const rowHeight = context.windowDimensions.height / 24;
 
   const aboutNodes = aboutData.about.map((item, index) => {
     let position;
@@ -95,9 +73,20 @@ export default function AboutPage({ aboutData, darkMode, context }) {
         isConnectable: true,
         targetData: targetData,
         sourceData: sourceData,
+        isMobile: context.isMobile
       },
     };
   });
+
+  const imageComponentNode = {
+    id: `logo`,
+    type: 'image',
+    position: { x: columnWidth * 5.15, y: rowHeight * 2 },
+    data: {
+      imagePath: 'media/chat_gpt_logo.jpg',
+      darkMode: darkMode,
+    },
+  };
 
   const aboutEdges = [
     {
@@ -132,33 +121,41 @@ export default function AboutPage({ aboutData, darkMode, context }) {
     },
   ];
 
-  return (
-    <Border className="flex flex-col w-full h-full">
-      <Banner darkMode={darkMode} />
-      <ReactFlow
-        className="w-full h-full"
-        nodes={[
-          {
-            id: `logo`,
-            type: 'image',
-            position: { x: columnWidth * 5.15, y: rowHeight * 2 },
-            data: {
-              imagePath: 'media/chat_gpt_logo.jpg',
-              darkMode: darkMode,
-            },
-          },
-          ...aboutNodes,
-        ]}
-        edges={aboutEdges}
-        nodeTypes={nodeTypes}
-        edgeTypes={edgeTypes}
-        fitView={true}
-        zoomOnScroll={true}
-        zoomOnPinch={true}
-        paneMoveable={false}
-        proOptions={proOptions}
-        style={{ background: darkMode ? 'alt-dark' : 'alt-light' }}
-      />
-    </Border>
-  );
-}
+  {
+    if (context.isMobile)
+    {
+      return (
+        <div className='flex flex-col w-full h-full overflow-y-auto'>
+          <AboutNode {...aboutNodes[0]} />
+          <ImageComponent {...imageComponentNode} />
+          <AboutNode {...aboutNodes[1]} />
+          <AboutNode {...aboutNodes[2]} />
+          <AboutNode {...aboutNodes[3]} />
+        </div>
+      );
+    }
+    else
+    {
+      return (
+        <Border className="flex flex-col w-full h-full">
+          <Banner darkMode={darkMode} />
+          <ReactFlow
+            className="w-full h-full"
+            nodes={[
+              imageComponentNode,
+              ...aboutNodes,
+            ]}
+            edges={aboutEdges}
+            nodeTypes={nodeTypes}
+            edgeTypes={edgeTypes}
+            fitView={true}
+            zoomOnScroll={true}
+            zoomOnPinch={true}
+            proOptions={proOptions}
+            style={{ background: darkMode ? 'alt-dark' : 'alt-light' }}
+          />
+        </Border>
+      );
+    }
+  }
+};

@@ -4,7 +4,7 @@ const resumeData = {
     'An accomplished Data Engineer with specialized expertise in Cloud Computing (AWS) and Big Data technologies (Spark, Glue). I bring a blend of back-end and front-end development skills, primarily utilizing Python and Node.',
   expertise: [
     'Data Engineering',
-    'Front-End Dev',
+    'Full Stack Developer',
     'Cloud & Automation',
     'Machine Learning',
     'Technical Writing',

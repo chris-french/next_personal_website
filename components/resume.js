@@ -15,30 +15,9 @@ import 'reactflow/dist/style.css';
 const proOptions = { hideAttribution: true };
 
 export default function Resume({ resumeData, darkMode, context }) {
-  const [windowDimensions, setWindowDimensions] = useState({
-    width: 0,
-    height: 0,
-  });
+ 
 
-  useEffect(() => {
-    const getWindowDimensions = () => {
-      const { innerWidth: width, innerHeight: height } = window;
-      return { width, height };
-    };
-
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    setWindowDimensions(getWindowDimensions());
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const isMobile = windowDimensions.width <= 768;
-
-  const maxColumns = isMobile ? 1 : 3;
+  const maxColumns = context.isMobile ? 1 : 3;
 
   const nodeTypes = {
     title: TitleNode,
@@ -54,8 +33,8 @@ export default function Resume({ resumeData, darkMode, context }) {
   };
 
   const yTopMargin = Number(context.headerHeight.replace('px', '')) + 20;
-  const columnWidth = windowDimensions.width / 12;
-  const rowHeight = windowDimensions.height / 24;
+  const columnWidth = context.windowDimensions.width / 12;
+  const rowHeight = context.windowDimensions.height / 24;
 
   let experienceNodes = resumeData.experience.reduce((result, item, index) => {
     const rowIndex = Math.floor(index / maxColumns);
@@ -71,6 +50,8 @@ export default function Resume({ resumeData, darkMode, context }) {
 
   const maxRows = Math.floor(experienceNodes.length / maxColumns);
 
+  const mobileXOffset = context.isMobile ? 3 : 1;
+
   const initialNodes = [
     {
       id: '1',
@@ -81,7 +62,7 @@ export default function Resume({ resumeData, darkMode, context }) {
     {
       id: '2',
       type: 'summary',
-      position: { x: columnWidth * 5, y: rowHeight * 4 },
+      position: { x: mobileXOffset * columnWidth * 5, y: rowHeight * 4 },
       data: {
         summary: resumeData.summary,
         darkMode: darkMode,
@@ -124,7 +105,7 @@ export default function Resume({ resumeData, darkMode, context }) {
     ...resumeData.expertise.map((expertise, index) => ({
       id: `expertise_${index}`,
       type: 'expertise',
-      position: { x: columnWidth * 3 + 250 * index, y: rowHeight * 9 },
+      position: { x: mobileXOffset * columnWidth * 3 + 250 * index, y: rowHeight * 9 },
       data: {
         label: expertise,
         darkMode: darkMode,
@@ -146,7 +127,7 @@ export default function Resume({ resumeData, darkMode, context }) {
         id: `experience_${index}`,
         type: 'experience',
         position: {
-          x: columnWidth * 3 + 450 * col,
+          x: mobileXOffset * columnWidth * 3 + 450 * col,
           y: yTopMargin * 4 + 250 * row,
         },
         data: {
@@ -169,7 +150,7 @@ export default function Resume({ resumeData, darkMode, context }) {
       id: `education_${index}`,
       type: 'education',
       position: {
-        x: columnWidth + 350 * (index + 1),
+        x: mobileXOffset * columnWidth + 350 * (index + 1),
         y: (maxRows + 1) * 300 + yTopMargin * 2.2,
       },
       data: {
@@ -381,7 +362,6 @@ export default function Resume({ resumeData, darkMode, context }) {
         maxZoom={1}
         zoomOnScroll={true}
         zoomOnPinch={true}
-        paneMoveable={false}
         proOptions={proOptions}
         style={{ background: darkMode ? 'alt-dark' : 'alt-light' }}
       />

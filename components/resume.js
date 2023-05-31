@@ -350,7 +350,7 @@ export default function Resume({ resumeData, darkMode, context }) {
 
   return (
     <Border className="flex flex-col w-full h-full">
-      <Banner darkMode={darkMode} />
+      <Banner darkMode={darkMode} isMobile={context.isMobile} />
       <ReactFlow
         className="w-full h-full"
         nodes={initialNodes}

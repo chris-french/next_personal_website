@@ -1,6 +1,6 @@
 import Border from './Border';
 
-function Banner({ darkMode }) {
+function Banner({ darkMode, isMobile }) {
   return (
     <Border
       style={{ zIndex: 1 }}
@@ -8,8 +8,9 @@ function Banner({ darkMode }) {
       className={`resume-tooltip ${
         darkMode ? 'bg-alt-dark text-light' : 'text-dark bg-alt-light'
       } 
+      ${isMobile ? 'hidden' : 'visible'}
             absolute text-center p-2 w-screen pl-[20vh] h-[5em] rotate-45 
-            transform left-[70vh]  `}
+            transform left-[40vw] top-[10vh]  `}
     >
       <p>
         Click and drag!

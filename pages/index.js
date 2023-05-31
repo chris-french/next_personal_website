@@ -86,13 +86,9 @@ const Home = () => {
               borderRadius="md:rounded-lg"
               className={`
 
-               
-              ring-inset overflow-hidden
+              overflow-hidden
               border-opacity-75
-
-              ring
-              ring-opacity-75
-              
+              ring ring-opacity-75 ring-inset
               md:w-[92vw]
               flex
               
@@ -163,7 +159,7 @@ const Home = () => {
       </div>
       <div
         style={{ zIndex: 8 }}
-        className={`pb-[3.2em] pl-1 pr-1  mt-[8em] md:mt-[10em] h-full w-full items-center overflow-y-hidden`}
+        className={`pb-[3.2em] pl-1 pr-1  mt-[7em] md:mt-[10em] h-full w-full items-center overflow-y-hidden`}
       >
         {selectedTab === 'Resume' && (
           <Resume

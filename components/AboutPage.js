@@ -85,7 +85,8 @@ export default function AboutPage({ aboutData, darkMode, context }) {
     data: {
       imagePath: 'media/chat_gpt_logo.jpg',
       darkMode: darkMode,
-    },
+      borderRadius: context.isMobile ? 'rounded-sm' : 'rounded-2xl'
+    }
   };
 
   const aboutEdges = [
@@ -125,7 +126,7 @@ export default function AboutPage({ aboutData, darkMode, context }) {
     if (context.isMobile)
     {
       return (
-        <div className='flex flex-col w-full h-full overflow-y-auto'>
+        <div className='pt-2 pr-1 pl-1 pb-6 flex flex-col gap-1 w-full h-full overflow-y-auto'>
           <AboutNode {...aboutNodes[0]} />
           <ImageComponent {...imageComponentNode} />
           <AboutNode {...aboutNodes[1]} />
@@ -138,7 +139,7 @@ export default function AboutPage({ aboutData, darkMode, context }) {
     {
       return (
         <Border className="flex flex-col w-full h-full">
-          <Banner darkMode={darkMode} />
+          <Banner darkMode={darkMode} isMobile={context.isMobile}  />
           <ReactFlow
             className="w-full h-full"
             nodes={[

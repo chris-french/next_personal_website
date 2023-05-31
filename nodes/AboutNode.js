@@ -5,11 +5,16 @@ import Border from '../components/Border';
 const AboutNode = ({ data }) => {
   return (
     <Border
+      style={{maxWidth: data.isMobile ? 'none' : '600px'}}
       className={classNames(
-        'about-node w-64 bg-white p-4 rounded-lg shadow-2xl',
+        'about-node p-4  shadow-2xl',
         {
           'bg-off-dark text-alt-light': data.darkMode,
           'bg-off-light text-alt-dark': !data.darkMode,
+        },
+        {
+            'w-full rounded-sm': data.isMobile,
+            'w-[400px] rounded-2xl': !data.isMobile
         }
       )}
     >

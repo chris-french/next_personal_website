@@ -3,17 +3,18 @@ import Border from './Border';
 import Link from 'next/link';
 
 const ImageComponent = ({ data }) => {
-  const { imagePath, darkMode } = data;
+  const { imagePath, darkMode, borderRadius } = data;
   
   return (
     <Border
       className={`p-1 ${darkMode ? 'bg-dark' : 'bg-light'}`}
-      borderRadius="rounded-2xl"
+      borderRadius={borderRadius}
     >
       <div
         className={`flex flex-col rounded-2xl p-2 ${
           darkMode ? 'bg-off-light' : 'bg-off-dark'
-        }`}
+        }
+        `}
       >
         <div
           className={`p-2 pb-4 mt-4 text-center items-center md:w-[400px] rounded-2xl ${
@@ -31,7 +32,7 @@ const ImageComponent = ({ data }) => {
           alt="Logo auto-generated from stable diffusion: the theme is 'create a website with ChatGPT in a weekend'."
           width={'400px'}
           height={'400px'}
-          className="rounded-full pt-1"
+          className="rounded-full pt-1 mx-auto"
         />
 
         <div

@@ -9,7 +9,6 @@ const ImageComponent = ({ data }) => {
     <Border
       className={`p-1 ${darkMode ? 'bg-dark' : 'bg-light'}`}
       borderRadius="rounded-2xl"
-      darkMode={darkMode}
     >
       <div
         className={`flex flex-col rounded-2xl p-2 ${

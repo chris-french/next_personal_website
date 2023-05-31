@@ -40,20 +40,20 @@ const Home = () => {
   };
 
   return (
-    <div className={`flex flex-col ${darkMode ? 'bg-dark' : 'bg-light'}`}>
+    <div className={`h-screen flex flex-col ${darkMode ? 'bg-dark' : 'bg-light'}`}>
       <div
-        className={`flex flex-col items-center ${
+        className={`flex flex-col items-center h-full ${
           darkMode ? 'bg-off-dark' : 'bg-off-light'
         }`}
       >
         <div
           style={{ zIndex: 10 }}
-          className={`flex mb-auto self-stretch ${
+          className={`flex flex-col ${
             darkMode ? 'bg-off-dark' : 'bg-off-light'
           }`}
         >
           <div
-            className={`h-[100px] w-screen flex justify-center ${
+            className={`h-[4em] w-screen flex justify-center ${
               darkMode ? 'bg-off-dark' : 'bg-off-light'
             }`}
           >
@@ -140,7 +140,7 @@ const Home = () => {
 
         <div
           style={{ zIndex: 8 }}
-          className={`pb-[9.2em] pl-1 pr-1 pt-[1em] h-screen w-full flex items-center`}
+          className={`pb-[3em] pl-1 pr-1 mt-[4.2em] h-full w-full items-center`}
         >
           {selectedTab === 'Resume' && (
             <Resume
@@ -157,27 +157,23 @@ const Home = () => {
             />
           )}
           {/* selectedTab === 'CV' && <CV /> */}
-        </div>
 
-        <Footer
-          style={{ zIndex: 1 }}
-          className="fixed inset-x-0 bottom-0 flex flex-row"
-          darkMode={darkMode}
-        >
-          <p>
-            This static site was created with Next.js, Tailwinds.css, and React
-            Flow.
-          </p>
-          <p className="ml-auto font-bold">
-            Fork me on{' '}
-            <span className="font-bold">
-              <Link href="https://github.com/chris-french/next_personal_website">
-                GitHub
-              </Link>
-            </span>
-            .
-          </p>
-        </Footer>
+          <Footer
+            style={{ zIndex: 7 }}
+            className="fixed inset-x-0 mt-10 bottom-0 flex flex-row"
+            darkMode={darkMode}
+          >
+            <p>
+              This static site was created with Next.js, Tailwinds.css, and React
+              Flow.
+            </p>
+            <Link href="https://github.com/chris-french/next_personal_website">
+            <a className="ml-auto font-bold h-full w-[10em]">
+              Fork me on GitHub.
+            </a>
+            </Link>
+          </Footer>
+        </div>
       </div>
     </div>
   );

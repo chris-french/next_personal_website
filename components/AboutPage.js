@@ -81,7 +81,7 @@ export default function AboutPage({ aboutData, darkMode, context }) {
   const imageComponentNode = {
     id: `logo`,
     type: 'image',
-    position: { x: columnWidth * 5.15, y: rowHeight * 2 },
+    position: { x: columnWidth * 5.5, y: rowHeight * 2 },
     data: {
       imagePath: 'media/chat_gpt_logo.jpg',
       darkMode: darkMode,
